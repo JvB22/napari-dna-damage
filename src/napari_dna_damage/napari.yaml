@@ -1,0 +1,10 @@
+name: napari-dna-damage
+display_name: DNA Damage Workflow
+contributions:
+  commands:
+    - id: napari-dna-damage.make_dna_damage_widget
+      title: Open DNA Damage Widget
+      python_name: napari_dna_damage._dna_damage_widget:DNADamageWidget
+  widgets:
+    - command: napari-dna-damage.make_dna_damage_widget
+      display_name: DNA Damage Workflow

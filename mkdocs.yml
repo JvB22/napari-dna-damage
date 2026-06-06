@@ -1,0 +1,32 @@
+site_name: Napari-DNA-Damage
+site_url: https://jvb22.github.io/napari-dna-damage/
+theme:
+  logo: assets/images/nb_icon.png
+  favicon: assets/images/nb_icon.png
+  name: material
+
+  features:
+    - navigation.footer
+
+  palette:
+    - scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: cyan
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Usage: usage.md
+  - Output: output.md
+
+watch:
+  - docs
