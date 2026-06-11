@@ -1,11 +1,15 @@
 First, select the DNA Damage plugin. Navigate to 'Plugins' and select 'DNA Damage Workflow'. The DNA Damage widget should appear on the right-hand side of the screen.
+<img src="../assets/images/bare_widget.PNG">
 
 ### Process Single Image
 Load a new image stack into Napari using ```File - Open File(s)...``` and select your desired file. In the DNA Damage widget, the File should have been automatically selected as the **Working Image**. When you have loaded multiple images into Napari, this selector can be used to indicate on which image the plugin should perform the analysis.<br>
 The DNA Damage plugin comes with 2 models, StarDist or CellPose. You can select which model to use in the dropdown menu. When using CellPose, you must provide that average diameter (in pixels) of your cells.<br>
 Next, we will tell the plugin which channels it should use for the nuclei and spot detection steps steps. You can select this under **Channel Selectors**. Counting starts from 0, you can use the scrollbar on the bottom of your screen the browse through the different channels of your image.<br>
 Given everything has been setup correctly, you can press **Run Analysis (Single Image)** to initiate the analysis. The plugin will start running the models in the background. Depending on your hardware this could take a while, using a GPU can significantly speed up the process. Napari will add the results as new layers to your current Napari session. Additionally, it will create a new output folder in the same directory as your original image, containing all the results of the analysis.<br>
+<img src="../assets/images/napari_widget.PNG">
 
 ### Batch Processing
 Additionally, the plugin contains functionality for batch processing. For this, you will again need to go through the previous steps, which is loading an example image and selecting the correct channels. However instead of selecting **Run Analysis (Single Image)**, under the **Batch Processing** section, select **Choose Directory**. Here you can select the folder containing the images you want to process. Scan the folder for .tif or .tiff files using **Scan Folder** and press **Run Batch Analysis** to process the files sequentially. When using batch processing, the plugin will not add any new layers to the Napari GUI, but instead only save the results to the outputfolders, created in the same directory as the original images.<br>
 If you wish to inspect the results anyway, you can go to ```File - Open File(s)...``` in Napari, and select all the resulting .tiff files in the output folder.
+
+<img src="../assets/images/batch_processing.PNG">

@@ -12,3 +12,5 @@ The folder will contain the following files:
     - mean_spots_per_nuclei - The average number of spots per nuclei in the image.
     - nuclei_with_spots - The number of nuclei in the image containing spots.
     - nuclei_without_spots - The number of nuclei in the image not containing spots.
+    - percentage_nuclei_with_spots - The percentage of nuclei in the image containing spots.
+    - percentage_nuclei_without_spots - The percentage of nuclei in the image not containing spots.

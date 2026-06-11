@@ -1,8 +1,8 @@
 site_name: Napari-DNA-Damage
 site_url: https://jvb22.github.io/napari-dna-damage/
 theme:
-  logo: assets/images/nb_icon.png
-  favicon: assets/images/nb_icon.png
+  logo: assets/images/dna-icon.png
+  favicon: assets/images/dna-icon.png
   name: material
 
   features:
@@ -26,6 +26,7 @@ nav:
   - Home: index.md
   - Installation: installation.md
   - Usage: usage.md
+  - Methods: methods.md
   - Output: output.md
 
 watch:

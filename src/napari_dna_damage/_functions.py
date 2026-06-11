@@ -81,6 +81,12 @@ def extract_features(
     # Number of nuclei without spots
     number_of_nuclei_without_spots = number_of_nuclei - number_of_nuclei_with_spots
 
+    # Percentage nuclei with spots
+    percentage_nuclei_with_spots = (number_of_nuclei_with_spots / number_of_nuclei if number_of_nuclei > 0 else 0) * 100
+
+    # Percentage of nuclei without spots
+    percentage_nuclei_without_spots = (1 - percentage_nuclei_with_spots) * 100
+
     data = {
         "mean_nuclei_intensity": mean_nuclei_intensity,
         "std_nuclei_intensity": std_nuclei_intensity,
@@ -90,6 +96,8 @@ def extract_features(
         "mean_spots_per_nuclei": mean_spots_per_nuclei,
         "nuclei_with_spots": number_of_nuclei_with_spots,
         "nuclei_without_spots": number_of_nuclei_without_spots,
+        "percentage_nuclei_with_spots": percentage_nuclei_with_spots,
+        "percentage_nuclei_without_spots": percentage_nuclei_without_spots
     }
 
     return pd.DataFrame([data])

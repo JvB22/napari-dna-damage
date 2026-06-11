@@ -20,7 +20,18 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "tifffile",
+    "torch",
+    "tensorflow",
+    "cellpose==3.1.1.2",
+    "csbdeep",
+    "stardist",
+    "spotiflow",
+    "magicgui",
+    "napari[all]",
 ]
 
 [tool.setuptools]

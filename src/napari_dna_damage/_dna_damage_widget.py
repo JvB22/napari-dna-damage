@@ -7,7 +7,6 @@ from magicgui.widgets import FileEdit
 from napari.qt.threading import thread_worker
 from napari.utils.notifications import show_info
 from qtpy.QtWidgets import (
-    QCheckBox,
     QComboBox,
     QFileDialog,
     QFrame,
@@ -100,7 +99,6 @@ def batch_analysis_worker(
     diameter,
     model_type,
     spotiflow_model,
-    aggregate_results,
 ):
 
     all_features = []
@@ -231,13 +229,6 @@ class DNADamageWidget(QWidget):
         self.file_list = QListWidget()
         self.file_list.setMaximumHeight(150)
         self.main_layout.addWidget(self.file_list)
-
-        # Aggregate results
-        self.aggregate_results_checkbox = QCheckBox("Aggregate Results")
-        self.aggregate_results_checkbox.setToolTip(
-            "Aggregate the results from all files in the batch processing list. Extract all the nuclei and spots results from multiple files and treat them like a single image. Useful when working with tilescans."
-        )
-        self.main_layout.addWidget(self.aggregate_results_checkbox)
 
         # Action buttons
         self.action_layout = QHBoxLayout()
@@ -493,7 +484,6 @@ class DNADamageWidget(QWidget):
             diameter,
             self.model_selector.currentText(),
             self.spotiflow_model,
-            self.aggregate_results_checkbox.isChecked(),
         )
         self._batch_worker.yielded.connect(self._on_batch_worker_yielded)
         self._batch_worker.finished.connect(self._on_batch_worker_finished)
