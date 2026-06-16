@@ -27,7 +27,7 @@ def get_nuclei_stardist(img, stardist_model, outputdir):
 
 
 def get_nuclei_cellpose(img, cellpose_model, diameter, outputdir):
-    masks, flows, styles, diams = cellpose_model.eval(img, diameter=None)
+    masks, flows, styles, diams = cellpose_model.eval(img, diameter=diameter)
     imwrite(os.path.join(outputdir, "nuclei_labels.tif"), masks)
     return masks
 
