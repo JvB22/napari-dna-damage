@@ -25,14 +25,18 @@ def get_nuclei_stardist(img, stardist_model, outputdir):
     imwrite(os.path.join(outputdir, "nuclei_labels.tif"), labels)
     return labels
 
+
 def get_nuclei_cellpose(img, cellpose_model, diameter, outputdir):
     masks, flows, styles, diams = cellpose_model.eval(img, diameter=None)
     imwrite(os.path.join(outputdir, "nuclei_labels.tif"), masks)
     return masks
 
+
 def get_spots(img, spotiflow_model, outputdir):
     spots, details = spotiflow_model.predict(img, verbose=False)
-    np.save(os.path.join(outputdir, "spots.npy"), spots)
+    df = pd.DataFrame(spots, columns=["axis-0", "axis-1"])
+    df.index.name = "index"
+    df.to_csv(os.path.join(outputdir, "spots.csv"), index=True)
     return spots
 
 
@@ -82,7 +86,9 @@ def extract_features(
     number_of_nuclei_without_spots = number_of_nuclei - number_of_nuclei_with_spots
 
     # Percentage nuclei with spots
-    percentage_nuclei_with_spots = (number_of_nuclei_with_spots / number_of_nuclei if number_of_nuclei > 0 else 0) * 100
+    percentage_nuclei_with_spots = (
+        number_of_nuclei_with_spots / number_of_nuclei if number_of_nuclei > 0 else 0
+    ) * 100
 
     # Percentage of nuclei without spots
     percentage_nuclei_without_spots = (1 - percentage_nuclei_with_spots) * 100
@@ -97,7 +103,7 @@ def extract_features(
         "nuclei_with_spots": number_of_nuclei_with_spots,
         "nuclei_without_spots": number_of_nuclei_without_spots,
         "percentage_nuclei_with_spots": percentage_nuclei_with_spots,
-        "percentage_nuclei_without_spots": percentage_nuclei_without_spots
+        "percentage_nuclei_without_spots": percentage_nuclei_without_spots,
     }
 
     return pd.DataFrame([data])

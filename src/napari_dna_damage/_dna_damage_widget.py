@@ -249,6 +249,9 @@ class DNADamageWidget(QWidget):
         # Stretch
         self.main_layout.addStretch(1)
 
+        self._reset_layer_choices()
+        self._get_and_apply_num_channels()
+
     def _get_image_layers(self):
         return [
             layer.name
